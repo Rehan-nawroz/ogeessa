@@ -1,0 +1,16 @@
+# Normalize text files to LF in the repository and in every clone,
+# regardless of each contributor's core.autocrlf setting.
+* text=auto eol=lf
+
+# Windows scripts must stay CRLF — .bat/.cmd files misbehave with LF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary assets are never line-ending converted.
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.whl binary
