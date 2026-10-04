@@ -1,0 +1,58 @@
+# ---------------------------------------------------------------------------
+# Ogeessa — public repository .gitignore
+# Everything here is local-only and must never reach GitHub.
+# ---------------------------------------------------------------------------
+
+# --- secrets (the .env.example TEMPLATE is deliberately kept tracked) ---
+.env
+.env.*
+!.env.example
+
+# --- virtual environments -------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# --- python bytecode and build artifacts ---------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+
+# --- data Ogeessa writes at runtime --------------------------------------
+# watchlist.json = your saved tickers (personal)
+# ogeessa_log_*.txt = logs saved from the TUI "Save to file" option
+watchlist.json
+ogeessa_log_*.txt
+*.log
+
+# --- test / type-check / coverage caches ----------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- editors and operating systems ----------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- assistant / agent tool state ------------------------------------------
+.freebuff/
+.codebuff/
+.cursor/
+.claude/
+
+# --- stray nested checkout of the old ogeessa/ogeessa layout -------------
+# It carries its own .git directory; without this line `git add .` records it
+# as an embedded repository (a gitlink) instead of copying its files.
+ogeessa/

@@ -1,0 +1,46 @@
+# Ogeessa - stock trading agent (Python 3.12)
+#
+# These pins are the exact set this project is built and tested with. They
+# differ from the project's earlier pin file because the code moved on:
+#
+# 1. rich 13 -> 15: the Textual TUI (textual 8.x) requires rich>=14.2.0, so
+#    rich==13.7.1 could never resolve alongside it.
+# 2. langchain 0.2.x -> 1.4.x plus langchain-classic: the agent now imports the
+#    langchain_classic namespace (AgentExecutor / create_tool_calling_agent),
+#    which ships as its own package.
+# 3. duckduckgo-search -> ddgs: the search package was renamed upstream;
+#    tools/news.py does `from ddgs import DDGS`.
+# 4. pandas-ta-classic 0.8.x: the maintained republication of the deleted
+#    pandas-ta 0.3.14b0 codebase. Import it as: import pandas_ta_classic as ta
+# 5. yfinance 1.7.x: the 0.2.x line is blocked by Yahoo's anti-bot changes and
+#    returns empty data for every symbol.
+# 6. No setuptools pin: pandas-ta-classic 0.8.x does not need pkg_resources.
+#
+# Install:  pip install -r requirements.txt
+
+# --- agent ---
+langchain==1.4.2
+langchain-classic==1.0.8
+langchain-core==1.6.5
+langchain-community==0.4.2
+
+# --- providers (imported lazily; only the one you use is needed) ---
+langchain-openai==1.6.6
+langchain-anthropic==1.7.4
+langchain-groq==1.1.3
+langchain-google-genai==4.4.0
+
+# --- market data ---
+yfinance==1.7.0
+pandas==3.0.6
+pandas-ta-classic==0.8.32
+ddgs==9.16.0
+requests>=2.31,<3
+
+# --- terminal UI ---
+textual==8.2.8
+rich==15.0.0
+pyperclip==1.11.0
+
+# --- configuration ---
+python-dotenv==1.2.3
